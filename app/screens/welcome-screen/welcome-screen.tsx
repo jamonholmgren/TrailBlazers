@@ -1,15 +1,24 @@
 import * as React from "react"
-import { View, Image, ViewStyle, TextStyle, ImageStyle, SafeAreaView } from "react-native"
-import { NavigationScreenProps } from "react-navigation"
+import {
+  View,
+  Image,
+  ViewStyle,
+  TextStyle,
+  ImageStyle,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native"
+import { NavigationScreenProps, FlatList } from "react-navigation"
 import { Text } from "../../components/text"
 import { Button } from "../../components/button"
 import { Screen } from "../../components/screen"
-import { Wallpaper } from "../../components/wallpaper"
 import { Header } from "../../components/header"
 import { color, spacing } from "../../theme"
-import { bowserLogo } from "./"
+import { blazersLogo } from "./"
+import { useStores } from "../../models/root-store"
+import { observer } from "mobx-react"
 
-const FULL: ViewStyle = { flex: 1 }
+const FULL: ViewStyle = { flex: 1, backgroundColor: "#232323" }
 const CONTAINER: ViewStyle = {
   backgroundColor: color.transparent,
   paddingHorizontal: spacing[4],
@@ -77,46 +86,47 @@ const FOOTER_CONTENT: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
 }
+const PLAYER_ROW: ViewStyle = {
+  flexDirection: "row",
+}
+const PLAYER_IMAGE = {
+  width: 50,
+  height: 50,
+}
+const PLAYER_NAME = {
+  flex: 1,
+  fontSize: 20,
+  padding: 15,
+}
 
 export interface WelcomeScreenProps extends NavigationScreenProps<{}> {}
 
-export const WelcomeScreen: React.FunctionComponent<WelcomeScreenProps> = props => {
-  const nextScreen = React.useMemo(() => () => props.navigation.navigate("demo"), [
-    props.navigation,
-  ])
+export const WelcomeScreen: React.FunctionComponent<WelcomeScreenProps> = observer(props => {
+  const rootStore = useStores()
 
   return (
     <View testID="WelcomeScreen" style={FULL}>
-      <Wallpaper />
-      <Screen style={CONTAINER} preset="scroll" backgroundColor={color.transparent}>
+      <Screen style={CONTAINER} preset="fixed" backgroundColor={color.transparent}>
         <Header headerTx="welcomeScreen.poweredBy" style={HEADER} titleStyle={HEADER_TITLE} />
         <Text style={TITLE_WRAPPER}>
-          <Text style={TITLE} text="Your new app, " />
-          <Text style={ALMOST} text="almost" />
-          <Text style={TITLE} text="!" />
+          <Text style={TITLE} text="Trail Blazers Roster" />
         </Text>
-        <Text style={TITLE} preset="header" tx="welcomeScreen.readyForLaunch" />
-        <Image source={bowserLogo} style={BOWSER} />
-        <Text style={CONTENT}>
-          This probably isn't what your app is going to look like. Unless your designer handed you
-          this screen and, in that case, congrats! You're ready to ship.
-        </Text>
-        <Text style={CONTENT}>
-          For everyone else, this is where you'll see a live preview of your fully functioning app
-          using Ignite.
-        </Text>
+        <Image source={blazersLogo} style={BOWSER} />
+        <FlatList
+          data={rootStore.players}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={PLAYER_ROW}
+              onPress={() => {
+                props.navigation.navigate("details")
+              }}
+            >
+              <Image style={PLAYER_IMAGE} source={{ uri: item.image }} />
+              <Text style={PLAYER_NAME}>{item.name}</Text>
+            </TouchableOpacity>
+          )}
+        />
       </Screen>
-      <SafeAreaView style={FOOTER}>
-        <View style={FOOTER_CONTENT}>
-          <Button
-            testID="next-screen-button"
-            style={CONTINUE}
-            textStyle={CONTINUE_TEXT}
-            tx="welcomeScreen.continue"
-            onPress={nextScreen}
-          />
-        </View>
-      </SafeAreaView>
     </View>
   )
-}
+})

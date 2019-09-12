@@ -1,16 +1,7 @@
 import * as React from "react"
-import {
-  View,
-  Image,
-  ViewStyle,
-  TextStyle,
-  ImageStyle,
-  SafeAreaView,
-  TouchableOpacity,
-} from "react-native"
+import { View, Image, ViewStyle, TextStyle, ImageStyle, TouchableOpacity } from "react-native"
 import { NavigationScreenProps, FlatList } from "react-navigation"
 import { Text } from "../../components/text"
-import { Button } from "../../components/button"
 import { Screen } from "../../components/screen"
 import { Header } from "../../components/header"
 import { color, spacing } from "../../theme"
@@ -52,39 +43,10 @@ const TITLE: TextStyle = {
   lineHeight: 38,
   textAlign: "center",
 }
-const ALMOST: TextStyle = {
-  ...TEXT,
-  ...BOLD,
-  fontSize: 26,
-  fontStyle: "italic",
-}
 const BOWSER: ImageStyle = {
   alignSelf: "center",
   marginVertical: spacing[5],
   maxWidth: "100%",
-}
-const CONTENT: TextStyle = {
-  ...TEXT,
-  color: "#BAB6C8",
-  fontSize: 15,
-  lineHeight: 22,
-  marginBottom: spacing[5],
-}
-const CONTINUE: ViewStyle = {
-  paddingVertical: spacing[4],
-  paddingHorizontal: spacing[4],
-  backgroundColor: "#5D2555",
-}
-const CONTINUE_TEXT: TextStyle = {
-  ...TEXT,
-  ...BOLD,
-  fontSize: 13,
-  letterSpacing: 2,
-}
-const FOOTER: ViewStyle = { backgroundColor: "#20162D" }
-const FOOTER_CONTENT: ViewStyle = {
-  paddingVertical: spacing[4],
-  paddingHorizontal: spacing[4],
 }
 const PLAYER_ROW: ViewStyle = {
   flexDirection: "row",
@@ -113,16 +75,20 @@ export const WelcomeScreen: React.FunctionComponent<WelcomeScreenProps> = observ
         </Text>
         <Image source={blazersLogo} style={BOWSER} />
         <FlatList
-          data={rootStore.players}
+          data={rootStore.playersByFav}
           renderItem={({ item }) => (
             <TouchableOpacity
               style={PLAYER_ROW}
               onPress={() => {
+                rootStore.setPlayer(item)
                 props.navigation.navigate("details")
               }}
             >
               <Image style={PLAYER_IMAGE} source={{ uri: item.image }} />
-              <Text style={PLAYER_NAME}>{item.name}</Text>
+              <Text style={PLAYER_NAME}>
+                {item.name}
+                {item.fav ? " ⭐️" : ""}
+              </Text>
             </TouchableOpacity>
           )}
         />

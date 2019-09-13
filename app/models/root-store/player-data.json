@@ -1,0 +1,108 @@
+{
+  "players": [
+    {
+      "id": "Jusuf-Nurkic",
+      "name": "Jusuf Nurkic",
+      "href": "/basketball/player/57979/jusuf-nurkic",
+      "image": "http://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/203994.png",
+      "height": "7-0",
+      "age": 25
+    },
+    {
+      "id": "Rodney-Hood",
+      "name": "Rodney Hood",
+      "href": "/basketball/player/62659/rodney-hood",
+      "image": "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/203918.png",
+      "height": "6-7",
+      "age": 27
+    },
+    {
+      "id": "Kent-Bazemore",
+      "name": "Kent Bazemore",
+      "href": "/basketball/player/48985/kent-bazemore",
+      "image": "http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/6637.png",
+      "height": "6-5",
+      "age": 30
+    },
+    {
+      "id": "Zach-Collins",
+      "name": "Zach Collins",
+      "href": "/basketball/player/72704/zach-collins",
+      "image": "http://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1628380.png",
+      "height": "7-0",
+      "age": 22
+    },
+    {
+      "id": "Hassan-Whiteside",
+      "name": "Hassan Whiteside",
+      "href": "/basketball/player/51438/hassan-whiteside",
+      "image": "http://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/202355.png",
+      "height": "7-0",
+      "age": 30
+    },
+    {
+      "id": "Pau-Gasol",
+      "name": "Pau Gasol",
+      "href": "/basketball/player/6014/pau-gasol",
+      "image": "http://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/2200.png",
+      "height": "7-1",
+      "age": 39
+    },
+    {
+      "id": "Mario-Hezonja",
+      "name": "Mario Hezonja",
+      "href": "/basketball/player/18072/mario-hezonja",
+      "image": "http://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1626209.png",
+      "height": "6-5",
+      "age": 24
+    },
+    {
+      "id": "Jaylen-Hoard",
+      "name": "Jaylen Hoard",
+      "href": "/basketball/player/67673/jaylen-hoard",
+      "image": "http://a.espncdn.com/combiner/i?img=/i/headshots/recruiting/ncb/players/190/224790.jpg",
+      "height": "6-6",
+      "age": 20
+    },
+    {
+      "id": "Skal-Labissiere",
+      "name": "Skal Labissiere",
+      "href": "/basketball/player/65903/skal-labissiere",
+      "image": "http://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1627746.png",
+      "height": "6-9",
+      "age": 23
+    },
+    {
+      "id": "Damian-Lillard",
+      "name": "Damian Lillard",
+      "href": "/basketball/player/60260/damian-lillard",
+      "image": "http://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/203081.png",
+      "height": "6-3",
+      "age": 29
+    },
+    {
+      "id": "C-J-Mccollum",
+      "name": "C.J. Mccollum",
+      "href": "/basketball/player/49264/c-j-mccollum",
+      "image": "http://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/203468.png",
+      "height": "6-3",
+      "age": 28
+    },
+    {
+      "id": "Anthony-Tolliver",
+      "name": "Anthony Tolliver",
+      "href": "/basketball/player/35886/anthony-tolliver",
+      "image": "http://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/201229.png",
+      "height": "6-7",
+      "age": 34
+    },
+    {
+      "id": "Gary-Trent-Jr",
+      "name": "Gary Trent, Jr.",
+      "href": "/basketball/player/70117/gary-trent",
+      "image": "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1629107.png",
+      "height": "6-4",
+      "age": 20
+    }
+  ]
+}

@@ -1,17 +1,49 @@
 import { Instance, SnapshotOut, types } from "mobx-state-tree"
 import { NavigationStoreModel } from "../../navigation/navigation-store"
+const playerData = require("./player-data.json")
 
-/**
- * A RootStore model.
- */
-export const RootStoreModel = types.model("RootStore").props({
-  navigationStore: types.optional(NavigationStoreModel, {}),
-})
+export const PlayerModel = types
+  .model({
+    id: types.identifier,
+    name: types.string,
+    href: types.string,
+    image: types.string,
+    height: types.string,
+    age: types.number,
+    fav: types.optional(types.boolean, false),
+  })
+  .actions(self => ({
+    toggleFav() {
+      self.fav = !self.fav
+    },
+  }))
+
+export const RootStoreModel = types
+  .model("RootStore")
+  .props({
+    navigationStore: types.optional(NavigationStoreModel, {}),
+    players: types.array(PlayerModel),
+    currentPlayer: types.maybe(types.safeReference(PlayerModel)),
+  })
+  .actions(self => ({
+    afterCreate() {
+      self.players = playerData.players
+    },
+    setPlayer(player: Player) {
+      self.currentPlayer = player
+    },
+  }))
+  .views(self => ({
+    get playersByFav() {
+      return self.players.sort((a, b) => (a.fav ? -1 : 1))
+    },
+  }))
 
 /**
  * The RootStore instance.
  */
 export type RootStore = Instance<typeof RootStoreModel>
+export type Player = Instance<typeof PlayerModel>
 
 /**
  * The data of a RootStore.

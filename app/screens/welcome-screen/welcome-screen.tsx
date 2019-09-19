@@ -113,6 +113,21 @@ export const WelcomeScreen: React.FunctionComponent<WelcomeScreenProps> = observ
     p.name.toLowerCase().includes(searchValue.toLowerCase()),
   )
 
+  const renderPlayerRow = ({ item }) => (
+    <TouchableOpacity
+      onPress={() => {
+        rootStore.setPlayer(item as Player)
+        props.navigation.navigate("details")
+      }}
+      style={PLAYER_ROW}
+    >
+      <Image style={PLAYER_IMAGE} source={{ uri: item.image }} />
+      <Text style={PLAYER_NAME}>
+        {item.name} {item.fav ? "⭐" : ""}
+      </Text>
+    </TouchableOpacity>
+  )
+
   return (
     <View testID="WelcomeScreen" style={FULL}>
       <Screen style={CONTAINER} preset="scroll" backgroundColor={color.transparent}>
@@ -122,21 +137,7 @@ export const WelcomeScreen: React.FunctionComponent<WelcomeScreenProps> = observ
         </Text>
         <Image source={bowserLogo} style={BOWSER} />
         <TextInput style={SEARCH} onChangeText={setSearchValue} />
-        <FlatList
-          data={players}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() => {
-                rootStore.setPlayer(item as Player)
-                props.navigation.navigate("details")
-              }}
-              style={PLAYER_ROW}
-            >
-              <Image style={PLAYER_IMAGE} source={{ uri: item.image }} />
-              <Text style={PLAYER_NAME}>{item.name}</Text>
-            </TouchableOpacity>
-          )}
-        />
+        <FlatList data={players} renderItem={renderPlayerRow} />
       </Screen>
     </View>
   )

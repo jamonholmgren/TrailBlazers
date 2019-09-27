@@ -1,4 +1,4 @@
-import { createStackNavigator } from "react-navigation"
+import { createStackNavigator } from "react-navigation-stack"
 import { WelcomeScreen } from "../screens/welcome-screen"
 import { DetailsScreen } from "../screens/details-screen"
 

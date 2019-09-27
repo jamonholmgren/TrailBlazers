@@ -18,6 +18,7 @@ import { color, spacing } from "../../theme"
 import { blazersLogo } from "./"
 import { useStores } from "../../models/root-store/root-store-context"
 import { observer } from "mobx-react"
+import { RootStore } from "../../models/root-store"
 
 const FULL: ViewStyle = { flex: 1, backgroundColor: "#232323" }
 const CONTAINER: ViewStyle = {
@@ -103,6 +104,8 @@ export interface WelcomeScreenProps extends NavigationScreenProps<{}> {}
 
 export const WelcomeScreen: React.FunctionComponent<WelcomeScreenProps> = observer(props => {
   const rootStore = useStores()
+
+  console.tron.log(rootStore.navigationStore.rootStore)
 
   return (
     <View testID="WelcomeScreen" style={FULL}>

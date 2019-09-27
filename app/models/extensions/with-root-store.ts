@@ -7,9 +7,6 @@ import { RootStore } from "../root-store"
  */
 export const withRootStore = (self: IStateTreeNode) => ({
   views: {
-    /**
-     * The root store.
-     */
     get rootStore() {
       return getRoot(self) as RootStore
     },

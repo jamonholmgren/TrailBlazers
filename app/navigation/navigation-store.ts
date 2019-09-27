@@ -1,7 +1,8 @@
-import { Instance, types } from "mobx-state-tree"
+import { Instance, types, resolvePath } from "mobx-state-tree"
 import { RootNavigator } from "./root-navigator"
 import { NavigationActions, NavigationAction } from "react-navigation"
 import { NavigationEvents } from "./navigation-events"
+import { RootStore } from "../models/root-store/root-store"
 
 const DEFAULT_STATE = RootNavigator.router.getStateForAction(NavigationActions.init(), null)
 
@@ -86,6 +87,11 @@ export const NavigationStoreModel = NavigationEvents.named("NavigationStore")
      */
     navigateTo(routeName: string) {
       self.dispatch(NavigationActions.navigate({ routeName }))
+    },
+  }))
+  .views(self => ({
+    get rootStore(): RootStore {
+      return resolvePath(self, "..")
     },
   }))
 
